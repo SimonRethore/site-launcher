@@ -4,16 +4,22 @@
       <img src="@/assets/images/logo.png">
       <h1>SITE LAUNCHER</h1>
     </div>
+    <div class="grid">
+      <HomeSite v-for="site in sites" :key="site.name" :site="site"></HomeSite>
+    </div>
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
+import HomeSite from '@/components/HomeSite.vue'
 import data from '@/assets/data.json'
 
 export default {
   name: 'HomeView',
-  components: {},
+  components: {
+    HomeSite
+  },
   data: function () {
     return {
       sites: {}
@@ -46,6 +52,13 @@ export default {
   }
 }
 
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
 @media (min-width: 768px) {
   .header{
     height: 150px;
@@ -58,6 +71,10 @@ export default {
     h1{
       font-size: 40px;
     }
+  }
+
+  .grid{
+    margin: 15px 0;
   }
 }
 </style>
