@@ -7,6 +7,9 @@
     <div class="grid">
       <HomeSite v-for="site in sites" :key="site.name" :site="site"></HomeSite>
     </div>
+    <div class="footer">
+      <p>© 2023 Simon RÉTHORÉ</p>
+    </div>
   </div>
 </template>
 
@@ -57,6 +60,16 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin: 10px 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-family: 'Rubik', serif;
+  font-size: 14px;
+  background-color: #FAF3E0;
 }
 
 @media (min-width: 768px) {

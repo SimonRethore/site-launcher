@@ -16,6 +16,13 @@ body{
 
 @font-face {
   font-family: "Rubik";
+  src: url("assets/fonts/Rubik-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rubik";
   src: url("assets/fonts/Rubik-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
