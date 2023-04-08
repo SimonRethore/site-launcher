@@ -8,10 +8,20 @@
 </template>
 
 <script>
+import _ from 'lodash'
+import data from '@/assets/data.json'
 
 export default {
   name: 'HomeView',
-  components: {}
+  components: {},
+  data: function () {
+    return {
+      sites: {}
+    }
+  },
+  created () {
+    this.sites = _.orderBy(data, ['name'])
+  }
 }
 </script>
 
@@ -30,7 +40,7 @@ export default {
 
   h1{
     margin: 5px 0 0 10px;
-    font-family: 'LuckiestGuy';
+    font-family: 'LuckiestGuy', serif;
     font-size: 28px;
     letter-spacing: 2px;
   }
