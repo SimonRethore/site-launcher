@@ -1,5 +1,6 @@
 <template>
   <div class="site">
+    <div v-if="site.lead" class="site-lead"><span>Lead Dev</span></div>
     <div :class="siteLeftFrontClass">
       <img class="site-image" :src="imageLink" />
       <div class="site-name">
@@ -83,11 +84,60 @@ export default {
 <style scoped lang="scss">
 .site{
   display: flex;
+  position: relative;
   width: 300px;
   height: 200px;
   margin: 10px;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+  .site-lead {
+    width: 150px;
+    height: 150px;
+    top: -10px;
+    left: -10px;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .site-lead::before,
+  .site-lead::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #892140;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+
+  .site-lead::before {
+    top: 0;
+    right: 0;
+  }
+
+  .site-lead::after {
+    bottom: 0;
+    left: 0;
+  }
+
+  .site-lead span {
+    position: absolute;
+    right: -25px;
+    top: 30px;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #a9294f;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font: 700 18px/1 'Rubik', sans-serif;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+    transform: rotate(-45deg);
+  }
 
   .site-left-front, .site-left-back {
     width: 400px;
