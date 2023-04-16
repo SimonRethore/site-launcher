@@ -41,6 +41,7 @@ export default {
     height: 100%;
     border: none;
     transition-duration: 1s;
+    cursor: pointer;
   }
 
   button:hover {

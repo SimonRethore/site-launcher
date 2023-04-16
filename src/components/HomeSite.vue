@@ -1,9 +1,26 @@
 <template>
   <div class="site">
-    <div class="site-left">
+    <div :class="siteLeftFrontClass">
       <img class="site-image" :src="imageLink" />
       <div class="site-name">
         <b>{{ site.name }}</b>
+      </div>
+    </div>
+    <div :class="siteLeftBackClass">
+      <img class="site-image darker" :src="imageLink" />
+      <div v-if="null !== environmentSelected" class="environment-name">
+        <b>{{ environmentSelected.name }}</b>
+      </div>
+      <div class="links">
+        <template v-for="environment in site.environments">
+          <template v-for="link in environment.links">
+            <SiteLink
+              v-if="null !== environmentSelected && environment.name === environmentSelected.name"
+              :key="link.name"
+              :link="link"
+            ></SiteLink>
+          </template>
+        </template>
       </div>
     </div>
     <div class="site-right">
@@ -20,12 +37,14 @@
 
 <script>
 import SiteEnvironment from '@/components/subcomponents/SiteEnvironment.vue'
+import SiteLink from '@/components/subcomponents/SiteLink.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeSite',
   components: {
-    SiteEnvironment
+    SiteEnvironment,
+    SiteLink
   },
   props: {
     site: Object
@@ -34,7 +53,13 @@ export default {
     ...mapGetters([
       'siteSelected',
       'environmentSelected'
-    ])
+    ]),
+    siteLeftFrontClass: function () {
+      return (this.site !== this.siteSelected) ? 'site-left-front' : 'site-left-front hide'
+    },
+    siteLeftBackClass: function () {
+      return (this.site !== this.siteSelected) ? 'site-left-back hide' : 'site-left-back'
+    }
   },
   data: function () {
     return {
@@ -64,7 +89,7 @@ export default {
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
-  .site-left {
+  .site-left-front, .site-left-back {
     width: 400px;
     height: 100%;
 
@@ -75,7 +100,13 @@ export default {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
     }
+  }
 
+  .site-left-front.hide, .site-left-back.hide {
+    display: none;
+  }
+
+  .site-left-front{
     .site-name {
       position: relative;
       top: -55px;
@@ -101,11 +132,40 @@ export default {
     }
   }
 
+  .site-left-back {
+    .environment-name{
+      position: relative;
+      top: -300px;
+      margin-top: 20px;
+      text-align: center;
+      font-family: 'Rubik', serif;
+      font-size: 20px;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .links{
+      position: relative;
+      top: -300px;
+      margin: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
   .site-right {
     width: 100px;
     height: 100%;
     display: grid;
   }
+}
+
+.site:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.darker{
+  filter: brightness(50%);
 }
 
 @media (min-width: 768px) {
@@ -114,7 +174,7 @@ export default {
     height: 300px;
     margin: 15px;
 
-    .site-left {
+    .site-left-front {
       width: 400px;
       height: 100%;
 
