@@ -7,13 +7,20 @@
       </div>
     </div>
     <div class="site-right">
-      <SiteEnvironment v-for="environment in site.environments" :key="environment.name" :environment="environment"></SiteEnvironment>
+      <SiteEnvironment
+        v-for="environment in site.environments"
+        :key="environment.name"
+        :environment="environment"
+        :selected="site === siteSelected && environment === environmentSelected"
+        @on-select="onSelectEnvironment">
+      </SiteEnvironment>
     </div>
   </div>
 </template>
 
 <script>
 import SiteEnvironment from '@/components/subcomponents/SiteEnvironment.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeSite',
@@ -23,9 +30,26 @@ export default {
   props: {
     site: Object
   },
+  computed: {
+    ...mapGetters([
+      'siteSelected',
+      'environmentSelected'
+    ])
+  },
   data: function () {
     return {
       imageLink: require('@/assets/' + this.site.image)
+    }
+  },
+  methods: {
+    onSelectEnvironment: function (environment) {
+      if (this.site !== this.siteSelected || environment !== this.environmentSelected) {
+        this.$store.commit('siteSelected', this.site)
+        this.$store.commit('environmentSelected', environment)
+      } else {
+        this.$store.commit('siteSelected', null)
+        this.$store.commit('environmentSelected', null)
+      }
     }
   }
 }

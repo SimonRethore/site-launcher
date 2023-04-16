@@ -1,6 +1,9 @@
 <template>
   <div class="environment">
-    <button :class="lowerName + ' icon-' + lowerName"></button>
+    <button
+      :class="buttonClass"
+      @click="$emit('onSelect', environment)">
+    </button>
   </div>
 </template>
 
@@ -8,7 +11,17 @@
 export default {
   name: 'SiteEnvironment',
   props: {
-    environment: Object
+    environment: Object,
+    selected: Boolean
+  },
+  computed: {
+    buttonClass: function () {
+      if (!this.selected) {
+        return this.lowerName + ' icon-' + this.lowerName
+      }
+
+      return this.lowerName + ' icon-' + this.lowerName + ' active'
+    }
   },
   data: function () {
     return {
