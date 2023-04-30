@@ -2,7 +2,7 @@
   "name": "site-launcher",
   "description": "Web application which has purpose to simplify the developer's life by saving their working web application's links under multiple environments",
   "author": "Simon RÉTHORÉ",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
