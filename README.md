@@ -2,7 +2,7 @@
 
 Site Launcher is a web application which has purpose to simplify the developer's life by saving their working web application's links under multiple environments.
 
-Currently the application support 3 environments (Dev, Preprod and Prod) and 7 types of tags for link (front, back, extranet, api, github, gitlab and sentry)
+Currently the application supports 3 environments (Dev, Preprod and Prod) and 7 types of tags for links (front, back, extranet, api, github, gitlab and sentry)
 
 ## Project setup
 
@@ -43,12 +43,12 @@ Add your data in the assets directory:
                     { 
                         "name": "Front-Office",
                         "tag": "front",
-                        "link": "https://hello-world.fr"
+                        "value": "https://hello-world.fr"
                     },
                     { 
                         "name": "Back-Office",
                         "tag": "back",
-                        "link": "https://hello-world.fr/admin"
+                        "value": "https://hello-world.fr/admin"
                     }
                 ] 
             },
@@ -58,12 +58,12 @@ Add your data in the assets directory:
                     { 
                         "name": "Front-Office",
                         "tag": "front",
-                        "link": "http://localhost:80"
+                        "value": "http://localhost:80"
                     },
                     { 
                         "name": "Back-Office",
                         "tag": "back",
-                        "link": "http://localhost:80/admin"
+                        "value": "http://localhost:80/admin"
                     }
                 ] 
             }
