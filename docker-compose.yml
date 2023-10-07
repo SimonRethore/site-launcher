@@ -2,10 +2,16 @@ version: '3'
 services:
   web:
     image: site-launcher
-    container_name: site-launcher
     build: .
     ports:
-      - "8080:8080"
+      - '8080:8080'
     volumes:
       - '.:/app'
       - '/app/node_modules'
+  api:
+    image: clue/json-server
+    volumes:
+      - ./src/assets/:/data/
+    ports:
+      - '8081:80'
+    command: --watch

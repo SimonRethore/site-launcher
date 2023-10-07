@@ -1,8 +1,13 @@
-# Site Launcher
+<div align="center"><img align="center" src="./doc/logo.png" width="100" alt="Application logo"/></div>
+<h1 align="center">Site Launcher</h1>
+
+<br/>
 
 Site Launcher is a web application which has purpose to simplify the developer's life by saving their working web application's links under multiple environments.
 
 Currently the application supports 3 environments (Dev, Preprod and Prod) and 7 types of tags for links (front, back, extranet, api, github, gitlab and sentry)
+
+![Preview](./doc/preview.png)
 
 ## Project setup
 
@@ -15,13 +20,11 @@ git clone https://github.com/SimonRethore/site-launcher.git
 Then you can run locally:
 
 ```bash
-npm install
+make install # TO CREATE DOCKER CONTAINERS & INSTALL DEPENDENCIES
 ```
 
-For generating the build of the app to deploy it:
-
 ```bash
-npm run build
+make start # TO START CONTAINERS
 ```
 
 ## Usage
@@ -32,42 +35,45 @@ Add your data in the assets directory:
 
 ```json
 [
-    {
-        "name" : "Hello World",
-        "image" : "images/hello-world.jpg",
-        "lead": true,
-        "environments": [
-            { 
-                "name": "Prod", 
-                "links": [
-                    { 
-                        "name": "Front-Office",
-                        "tag": "front",
-                        "value": "https://hello-world.fr"
-                    },
-                    { 
-                        "name": "Back-Office",
-                        "tag": "back",
-                        "value": "https://hello-world.fr/admin"
-                    }
-                ] 
-            },
-            { 
-                "name": "Dev", 
-                "links": [
-                    { 
-                        "name": "Front-Office",
-                        "tag": "front",
-                        "value": "http://localhost:80"
-                    },
-                    { 
-                        "name": "Back-Office",
-                        "tag": "back",
-                        "value": "http://localhost:80/admin"
-                    }
-                ] 
-            }
-        ]
-    }
+   "items": [
+       {
+           "id": 1,
+           "name": "Hello World",
+           "image": "images/hello-world.jpg",
+           "lead": true,
+           "environments": [
+               { 
+                   "name": "Prod", 
+                   "links": [
+                       { 
+                           "name": "Front-Office",
+                           "tag": "front",
+                           "value": "https://hello-world.fr"
+                       },
+                       { 
+                           "name": "Back-Office",
+                           "tag": "back",
+                           "value": "https://hello-world.fr/admin"
+                       }
+                   ] 
+               },
+               { 
+                   "name": "Dev", 
+                   "links": [
+                       { 
+                           "name": "Front-Office",
+                           "tag": "front",
+                           "value": "http://localhost:80"
+                       },
+                       { 
+                           "name": "Back-Office",
+                           "tag": "back",
+                           "value": "http://localhost:80/admin"
+                       }
+                   ] 
+               }
+           ]
+       }
+   ]
 ]
 ```

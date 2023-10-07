@@ -16,7 +16,6 @@
 <script>
 import _ from 'lodash'
 import HomeSite from '@/components/HomeSite.vue'
-import data from '@/assets/data.json'
 
 export default {
   name: 'HomeView',
@@ -28,7 +27,13 @@ export default {
       sites: {}
     }
   },
-  created () {
+  async created () {
+    const response = await fetch('http://localhost:8081/items', {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+
     this.sites = _.orderBy(data, ['name'])
   }
 }

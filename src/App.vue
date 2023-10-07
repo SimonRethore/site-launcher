@@ -59,4 +59,7 @@ body{
 .icon-preprod:before {
   content: "\e902";
 }
+.icon-save:before {
+  content: "\e903";
+}
 </style>
