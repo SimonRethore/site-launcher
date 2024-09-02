@@ -1,5 +1,7 @@
 clean:
 	docker image rm site-launcher:latest
+docker:
+	docker compose exec web sh
 install:
 	docker compose build && \
 	npm install --force
