@@ -14,4 +14,8 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from) => {
+  document.title = to.meta?.title ?? 'Site Launcher'
+})
+
 export default router
