@@ -1,0 +1,39 @@
+[
+    {
+        "name" : "Hello World",
+        "image" : "images/hello-world.jpg",
+        "lead": true,
+        "environments": [
+            {
+                "name": "Prod",
+                "links": [
+                    {
+                        "name": "Front-Office",
+                        "tag": "front",
+                        "value": "https://hello-world.fr"
+                    },
+                    {
+                        "name": "Back-Office",
+                        "tag": "back",
+                        "value": "https://hello-world.fr/admin"
+                    }
+                ]
+            },
+            {
+                "name": "Dev",
+                "links": [
+                    {
+                        "name": "Front-Office",
+                        "tag": "front",
+                        "value": "http://localhost:80"
+                    },
+                    {
+                        "name": "Back-Office",
+                        "tag": "back",
+                        "value": "http://localhost:80/admin"
+                    }
+                ]
+            }
+        ]
+    }
+]

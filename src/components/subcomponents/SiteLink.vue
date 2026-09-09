@@ -1,6 +1,6 @@
 <template>
   <div class="link">
-    <a :href="link.value" target="_blank">
+    <a :href="link.value" target="_blank" rel="noopener noreferrer">
       <span :class="linkClass">{{ link.name }}</span>
     </a>
   </div>

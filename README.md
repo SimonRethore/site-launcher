@@ -29,6 +29,8 @@ make start # TO START CONTAINERS
 
 ## Usage
 
+`make install` copies `src/assets/data.json.example` to `src/assets/data.json` if it doesn't exist yet. This file is git-ignored so your real data never gets committed.
+
 Add your data in the assets directory:
 - `/images` for the site's image
 - `data.json` to define data that will be used by the app

@@ -3,6 +3,7 @@ clean:
 docker:
 	docker compose exec web sh
 install:
+	test -f src/assets/data.json || cp src/assets/data.json.example src/assets/data.json
 	docker compose build && \
 	npm install --force
 ip:
