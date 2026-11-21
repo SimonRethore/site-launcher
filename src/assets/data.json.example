@@ -3,6 +3,7 @@
         "name" : "Hello World",
         "image" : "images/hello-world.jpg",
         "lead": true,
+        "disabled": false,
         "environments": [
             {
                 "name": "Prod",

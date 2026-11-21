@@ -41,6 +41,7 @@ Add your data in the assets directory:
         "name" : "Hello World",
         "image" : "images/hello-world.jpg",
         "lead": true,
+        "disabled": false,
         "environments": [
             { 
                 "name": "Prod", 
@@ -76,3 +77,5 @@ Add your data in the assets directory:
     }
 ]
 ```
+
+Set `"disabled": true` on a site to hide it from the list (optional, defaults to `false`).
