@@ -1,6 +1,6 @@
 <template>
   <div class="site">
-    <div v-if="site.lead" class="site-lead"><span>Lead Dev</span></div>
+    <div v-if="site.lead && site !== siteSelected" class="site-lead"><span>Lead Dev</span></div>
     <div :class="siteLeftFrontClass">
       <img class="site-image" :src="imageLink" />
       <div class="site-name">
