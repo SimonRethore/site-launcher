@@ -9,19 +9,21 @@
     </div>
     <div :class="siteLeftBackClass">
       <img class="site-image darker" :src="imageLink" />
-      <div v-if="null !== environmentSelected" class="environment-name">
-        <b>{{ environmentSelected.name }}</b>
-      </div>
-      <div class="links">
-        <template v-for="environment in site.environments">
-          <template v-for="link in environment.links">
-            <SiteLink
-              v-if="null !== environmentSelected && environment.name === environmentSelected.name"
-              :key="link.name"
-              :link="link"
-            ></SiteLink>
+      <div class="site-left-back-content">
+        <div v-if="null !== environmentSelected" class="environment-name">
+          <b>{{ environmentSelected.name }}</b>
+        </div>
+        <div class="links">
+          <template v-for="environment in site.environments">
+            <template v-for="link in environment.links">
+              <SiteLink
+                v-if="null !== environmentSelected && environment.name === environmentSelected.name"
+                :key="link.name"
+                :link="link"
+              ></SiteLink>
+            </template>
           </template>
-        </template>
+        </div>
       </div>
     </div>
     <div class="site-right">
@@ -183,9 +185,17 @@ export default {
   }
 
   .site-left-back {
+    position: relative;
+
+    .site-left-back-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
     .environment-name{
-      position: relative;
-      top: -300px;
+      flex-shrink: 0;
       margin-top: 20px;
       text-align: center;
       font-family: 'Rubik', serif;
@@ -195,11 +205,15 @@ export default {
     }
 
     .links{
-      position: relative;
-      top: -300px;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
       margin: 20px;
       display: flex;
       flex-wrap: wrap;
+      align-content: flex-start;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
     }
   }
 
