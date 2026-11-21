@@ -42,7 +42,7 @@ export default {
   computed: {
     sites: function () {
       const sites = this.showDisabled ? this.allSites : _.reject(this.allSites, 'disabled')
-      return _.orderBy(sites, ['name'])
+      return [...sites].sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
     }
   }
 }
